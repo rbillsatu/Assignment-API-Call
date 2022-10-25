@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Ryan Bills">
+    <title>API Call</title>
+</head>
+
+<!-- API being called: -->
+<!-- MERRIAM-WEBSTER'S COLLEGIATE® DICTIONARY WITH AUDIO -->
+<!-- https://www.dictionaryapi.com/products/api-collegiate-dictionary -->
+
+
+<body>
+    <button id="Button" onclick="getWord()">
+        Load Words
+        </button>
+</body>
+
+<script>
+    function getWord(){
+        let word = document.createElement('h1')
+        let definition = document.createElement('p')
+
+        document.body.append(word)
+        document.body.appendChild(definition)
+
+        let url = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/voluminous?key=your-api-key"
+        console.log("Test")
+
+        fetch(url)
+            .then(response =>{
+                return response.json()
+            .then(json =>{
+                let a = 0;
+                word.innterHTML = json[0].meta
+            })
+            })
+    }
+</script>
+
+</html>
